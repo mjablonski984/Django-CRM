@@ -1,0 +1,123 @@
+[
+    {
+      "model": "accounts.Product",
+      "pk": 1,
+      "fields": {
+        "name": "Sunglasses",
+        "price": 24.99,
+        "category": "Cycling",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [1,2]
+      }
+    },
+    {
+      "model": "accounts.Product",
+      "pk": 2,
+      "fields": {
+        "name": "Water Bottle",
+        "price": 4.99,
+        "category": "Hiking",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [3]
+      }
+    },
+    {
+      "model": "accounts.Product",
+      "pk": 3,
+      "fields": {
+        "name": "5 Person Tent",
+        "price": 149.99,
+        "category": "Camping",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [1,4]
+      }
+    },
+    {
+      "model": "accounts.Product",
+      "pk": 4,
+      "fields": {
+        "name": "Road Bike",
+        "price": 249.99,
+        "category": "Cycling",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [1]
+      }
+    },
+    {
+      "model": "accounts.Product",
+      "pk": 5,
+      "fields": {
+        "name": "Warm Sleeping Bag",
+        "price": 99.99,
+        "category": "Camping",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [2]
+      }
+    },
+    {
+      "model": "accounts.Product",
+      "pk": 6,
+      "fields": {
+        "name": "Portable Stove",
+        "price": 39.99,
+        "category": "Camping",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [1,3]
+      }
+    },
+    {
+      "model": "accounts.Product",
+      "pk": 7,
+      "fields": {
+        "name": "Fleece Jacket",
+        "price": 49.99,
+        "category": "Hiking",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [2]
+      }
+    },
+    {
+      "model": "accounts.Product",
+      "pk": 8,
+      "fields": {
+        "name": "Cycling Cap",
+        "price": 15.99,
+        "category": "Cycling",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [1]
+      }
+    },
+    {
+      "model": "accounts.Product",
+      "pk": 9,
+      "fields": {
+        "name": "Trekking Poles",
+        "price": 29.99,
+        "category": "Hiking",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [1,2]
+      }
+    },
+    {
+        "model": "accounts.Product",
+        "pk": 10,
+        "fields": {
+          "name": "MRE 4 Servings",
+          "price": 9.99,
+          "category": "Camping",
+          "description": "Lorem ipsum dolor sit amet.",
+          "tags": [3,4]
+        }
+    },
+    {
+      "model": "accounts.Product",
+      "pk": 11,
+      "fields": {
+        "name": "Cups 5pk",
+        "price": 4.99,
+        "category": "Camping",
+        "description": "Lorem ipsum dolor sit amet.",
+        "tags": [3,4]
+      }
+    }
+]

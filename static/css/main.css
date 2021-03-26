@@ -1,0 +1,36 @@
+#total-orders {
+  background-color: #62c462;
+}
+
+#orders-delivered {
+  background-color: #7cd1c0;
+}
+
+#out-for-delivery {
+  background-color: #7abecc;
+}
+
+#orders-pending {
+  background-color: #4cb4c7;
+}
+
+input, select, textarea {
+  background-color: #ebeff5 !important;
+}
+
+input {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 1.5rem + 2px);
+  padding: .75rem 1rem;
+  font-size: .9375rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #52575c;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  cursor: pointer;
+}

@@ -1,0 +1,92 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md mb-3 mb-md-0">
+		<div class="card card-body">
+			<div class="card-header">
+				<h5 class="text-white">Customer : {{customer.name}}</h5>
+			</div>
+			<hr class="bg-secondary"/>
+			<a class="btn btn-secondary btn-lg btn-block my-3" href="{% url 'create_order' customer.id %}">Place Order</a>
+		</div>
+	</div>
+
+	<div class="col-md mb-3 mb-md-0">
+		<div class="card card-body">
+			<div class="card-header">
+				<h5 class="text-white">Contact Information</h5>
+			</div>			
+			<hr class="bg-secondary"/>
+			<p>Email: {{customer.email}}</p>
+			<p>Phone: {{customer.phone}}</p>
+		</div>
+	</div>
+
+	<div class="col-md mb-3 mb-md-0">
+		<div class="card card-body">
+			<div class="card-header">
+				<h5 class="text-white">Total Orders</h5>
+			</div>
+			<hr class="bg-secondary"/>
+			<h1 style="text-align: center;padding: 10px">{{order_count}}</h1>
+		</div>
+	</div>
+</div>
+
+<br>
+
+{% include 'accounts/partials/orders_filter.html' %}
+
+<div class="row my-4">
+	<div class="col-md">
+		<div class="card card-body">
+			<div class="card-header">
+				<h5 class="text-white">Orders</h5>
+			</div>			
+			<hr class="bg-secondary"/>
+			<div class="table-responsive">
+			<table class="table table-hover">
+				<tr>
+					<th>Product</th>
+					<th>Category</th>
+					<th>Note</th>
+					<th>Date&nbsp;Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+
+				{% for order in orders %}
+				<tr>
+					<td>{{order.product}}</td>
+					<td>{{order.product.category}}</td>
+					<td>{{order.note}}</td>
+					<td>{{order.date_created|date:"D d M Y"}}</td>
+					<td>{{order.status}}</td>					
+					<td><a class="btn btn-sm btn-secondary" href="{% url 'update_order' order.id %}">Update</a></td>
+					<!-- Delete Order Btn -->
+					{% if order.id == request.GET.delete_order|add:"0"  %}
+					<td>
+						<a class="btn btn-sm btn-warning mx-auto mb-2" href="{% url 'customer' customer.id %}">Cancel</a>
+						<form method="post" action="{% url 'delete_order' order.id %}?next={{ request.path }}">
+							{% csrf_token %}
+							<button class="btn btn-sm btn-danger mx-auto" type="submit">Delete</button>				
+						</form>
+					</td>
+					{% else %}
+					<td><a class="btn btn-sm btn-danger" href="?delete_order={{order.id}}&page={{request.GET.page}}">Delete</a></td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+			</table>
+			</div>
+			<!-- Pagination - Orders -->
+			{% include 'accounts/partials/pagination_links.html' %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

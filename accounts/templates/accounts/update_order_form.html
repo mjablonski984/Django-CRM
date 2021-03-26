@@ -1,0 +1,53 @@
+{%  extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="row mb-5">
+	<div class="col-md mb-3 mb-md-0">
+		<div class="card card-body">
+			<div class="card-header">
+				<h5 class="text-white">Customer</h5>
+			</div>			
+			<hr class="bg-secondary"/>
+			<h5 style="text-align: center;padding: 10px">{{order.customer.name}}</h5>
+		</div>
+	</div>
+	<div class="col-md mb-3 mb-md-0">
+		<div class="card card-body">
+			<div class="card-header">
+				<h5 class="text-white">Order ID</h5>
+			</div>			
+			<hr class="bg-secondary"/>
+			<h5 style="text-align: center;padding: 10px">{{order.id}}</h5>
+		</div>
+	</div>
+	<div class="col-md mb-3 mb-md-0">
+		<div class="card card-body">
+			<div class="card-header">
+				<h5 class="text-white">Date Created</h5>
+			</div>			
+			<hr class="bg-secondary"/>
+			<h5 style="text-align: center;padding: 10px">{{order.date_created|date:"D d M Y"}}</h5>
+		</div>
+	</div>
+</div>
+
+<div class="mx-auto">
+	<div class="card card-body">
+        <div class="card-header">
+            <h5 class="text-white">Update Order</h5>
+        </div>
+		<hr class="bg-secondary"/>
+		<form class="form-inline mt-4" action="" method="POST">
+			{% csrf_token %}
+            {% for field in form %}
+            <div class="d-block col-12 col-md-4 px-1 mb-3 mb-md-0">
+                {{ field }}
+            </div>
+            <hr>
+            {% endfor %}
+			<input class="btn btn-primary col-12 col-lg-4 mx-auto my-5" type="submit" name="Submit">
+		</form>
+	</div>
+</div>
+
+{% endblock %}

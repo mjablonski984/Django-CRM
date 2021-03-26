@@ -1,0 +1,42 @@
+[
+    { "model": "accounts.Customer",
+        "pk": 1,
+        "fields": {
+            "user": 2,
+            "name": "BS",
+            "email": "bs@test.com",
+            "phone": 1234567890,
+            "profile_pic": "default_user.png"
+        }
+    },
+    { "model": "accounts.Customer",
+        "pk": 2,
+        "fields": {
+            "user": 3,
+            "name": "CJ",
+            "email": "cs@test.com",
+            "phone": 1235311890,
+            "profile_pic": "default_user.png"
+        }
+    },
+    { "model": "accounts.Customer",
+        "pk": 3,
+        "fields": {
+            "user": 4,
+            "name": "ES",
+            "email": "es@test.com",
+            "phone": 1234567123,
+            "profile_pic": "default_user.png"
+        }
+    },
+    { "model": "accounts.Customer",
+        "pk": 4,
+        "fields": {
+            "user": 5,
+            "name": "AB",
+            "email": "ab@test.com",
+            "phone": 145656260,
+            "profile_pic": "default_user.png"
+        }
+    }
+]

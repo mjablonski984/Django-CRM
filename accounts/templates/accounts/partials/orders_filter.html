@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<div class="card-header">
+				<h5 class="text-white">Filter Orders</h5>
+			</div>			
+			<hr class="bg-secondary"/>
+			<form method="get" class="form">
+				<!-- {{filter.form}} --><!-- <- Entire filter form  -->
+				<div class="form-row">
+					<div class="form-group col-md-4 mx-auto">
+						<label>{{filter.form.product.label}}</label>{{filter.form.product}}
+					</div>
+					<div class="form-group col-md-4 mx-auto">
+						<label>{{filter.form.status.label}}</label>{{filter.form.status}}
+					</div>
+					<div class="form-group col-md-4 mx-auto">
+						<label>{{filter.form.note.label}}</label>{{filter.form.note}}
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-6 col-md-4 mx-auto">
+						<label>{{filter.form.start_date.label}}</label>{{filter.form.start_date}}
+					</div>
+					<div class="form-group col-6 col-md-4 mx-auto">
+						<label>{{filter.form.end_date.label}}</label>{{filter.form.end_date}}
+					</div>
+					
+					<div class="col-12 col-md-4 align-self-end mb-3">
+						<button class="btn btn-primary w-100" type="submit">Search</button>
+					</div>
+				</div>
+		  </form>
+		</div>
+	</div>	
+</div>

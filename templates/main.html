@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CRM</title>
+	<link rel="stylesheet" href="{% static '/vendors/bootstrap/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+	{%  include 'navbar.html' %}
+	<div class="container my-auto">
+		{% block content %}
+		{% endblock %}
+    </div>
+	<footer class="breadcrumb mt-auto mb-0 py-3">
+		<span class="mx-auto">&copy; mjablonski984</span>
+	</footer>
+	
+</body>
+
+<script src="{% static '/vendors/jquery-3.6.0.slim.min.js' %}" integrity=""></script>
+<script src="{% static '/vendors/popper.min.js' %}" integrity=""></script>
+<script src="{% static '/vendors/bootstrap/bootstrap.min.js' %}" integrity=""></script>
+</html>

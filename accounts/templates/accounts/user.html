@@ -1,0 +1,35 @@
+{% extends 'main.html' %} 
+{% block content %} 
+{% include 'accounts/partials/status.html' %}
+
+{% include 'accounts/partials/orders_filter.html' %}
+<div class="row my-4">
+  <div class="col-md">
+    <div class="card card-body">
+      <h5 class="mt-2 mb-4">My Orders</h5>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th>Product</th>
+            <th>Note</th>
+            <th>Date Orderd</th>
+            <th>Status</th>
+          </tr>
+
+          {% for order in orders %}
+          <tr>
+            <td>{{order.product}}</td>
+            <td>{{order.note}}</td>
+            <td>{{order.date_created|date:"D d M Y"}}</td>
+            <td>{{order.status}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <!-- Pagination - Orders -->
+			  {% include 'accounts/partials/pagination_links.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

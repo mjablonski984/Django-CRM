@@ -1,0 +1,65 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand text-success" href="{% url 'home' %}">Django CRM</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#basicExampleNav1"
+    aria-controls="basicExampleNav1" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Links -->
+  <div class="collapse navbar-collapse" id="basicExampleNav1">
+    <!-- Right -->
+    <ul class="navbar-nav ml-auto">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item ">
+        <a class="nav-link border-0">
+          {% if not request.user.is_staff %}
+            {% if request.user.customer and request.user.customer.profile_pic %}
+            <img class="align-bottom rounded-circle" style="width:20px;height:20px;" src="{{request.user.customer.profile_pic.url}}" >
+            {% else %}
+            <img class="align-bottom rounded-circle" style="width:20px;height:20px;" src="{{ '/images/default_user.png' }}" >
+            {% endif %}
+          {% endif %}
+          <span class="text-success">{{request.user}}</span></a>
+      </li>
+      {% if request.user.is_staff %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'products' %}">Products</a>
+      </li>
+      {% endif %}
+      {% if request.user.customer %}
+      <li class="nav-item">
+        <a class="nav-link border-right-0" href="{% url 'account' %}">Account</a>
+      </li>
+      {% endif %}
+      <li class="nav-item mr-5">
+        <a class="nav-link border-right-0" href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <!-- Links -->
+</nav>
+<!-- Navbar -->
+
+{% if request.user.is_authenticated %}
+  <!-- Breadcrumbs -->
+  <ol class="breadcrumb bg-dark">
+    {% if request.user.is_staff %}
+    <li class="breadcrumb-item"><a class="text-white" href="{% url 'home' %}">Home</a></li>
+    {% endif %}
+    {% if request.user.customer %}
+    <li class="breadcrumb-item"><a class="text-white" href="{% url 'user-page' %}">Home</a></li>
+    {% endif %}
+    {% if request.get_full_path != '/' %}
+    <li class="breadcrumb-item"><a class="text-white" href="{{ request.get_full_path_info }}">{{ request.resolver_match.url_name | title | cut:"-" | cut:"_" }}</a></li>
+    {% endif %}
+  </ol>
+  <!-- Breadcrumbs -->
+  {% endif %}

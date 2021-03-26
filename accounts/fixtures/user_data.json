@@ -1,0 +1,67 @@
+[
+    { "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "username": "JD",
+            "password": "pbkdf2_sha256$216000$AuhWh6PQQVfK$VI/BJqWTYZVJ369NDHgQUHldK2dEsv1AfVJsSld20FI=",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "jd@test.com",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    { "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "username": "BS",
+            "password": "pbkdf2_sha256$216000$AuhWh6PQQVfK$VI/BJqWTYZVJ369NDHgQUHldK2dEsv1AfVJsSld20FI=",
+            "first_name": "Bob",
+            "last_name": "Smith",
+            "email": "bs@test.com",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    { "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "username": "CJ",
+            "password": "pbkdf2_sha256$216000$AuhWh6PQQVfK$VI/BJqWTYZVJ369NDHgQUHldK2dEsv1AfVJsSld20FI=",
+            "first_name": "Carl",
+            "last_name": "Johnson",
+            "email": "cs@test.com",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    { "model": "auth.user",
+        "pk": 4,
+        "fields": {
+            "username": "ES",
+            "password": "pbkdf2_sha256$216000$AuhWh6PQQVfK$VI/BJqWTYZVJ369NDHgQUHldK2dEsv1AfVJsSld20FI=",
+            "first_name": "Emma",
+            "last_name": "Smith",
+            "email": "es@test.com",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    { "model": "auth.user",
+        "pk": 5,
+        "fields": {
+            "username": "AB",
+            "password": "pbkdf2_sha256$216000$AuhWh6PQQVfK$VI/BJqWTYZVJ369NDHgQUHldK2dEsv1AfVJsSld20FI=",
+            "first_name": "Al",
+            "last_name": "Bundy",
+            "email": "ab@test.com",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true
+        }
+    }
+]

@@ -1,0 +1,64 @@
+{%  extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+	.profile-pic{
+		max-width: 100%;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+	input[type="file"] {
+		display: block;
+		width: 100%;
+		height: calc(1.5em + 1.5rem + 2px);
+		padding: .75rem 1rem;
+		font-size: .9375rem;
+		font-weight: 400;
+		line-height: 1.5;
+		color: #52575c;
+		background-color: #fff;
+		background-clip: padding-box;
+		border: 1px solid #ced4da;
+		border-radius: .25rem;
+		transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		cursor: pointer;
+	}
+</style>
+
+<br>
+<div class="row">
+	<div class="col-md-4 mb-4">
+		<div class="card card-body">
+			<a class="btn btn-secondary my-3" href="{% url 'home' %}"> &#8592; Back to Profile</a>
+			<hr class="bg-secondary">
+			<h3 class="my-2 text-center">Account Settings</h3>
+			<hr class="bg-secondary">
+            <!-- User Image -->
+			{% if request.user.customer.profile_pic %}
+			<img class="profile-pic my-3" src="{{request.user.customer.profile_pic.url}}" >
+			{% else %}
+			<img class="profile-pic my-3" src="{{ '/images/default_user.png' }}" >
+			{% endif %}
+		
+		</div>
+	</div>
+	<div class="col-md-8 mb-4">
+		<div class="card card-body">
+			<div class="form-group">		
+				<form method="POST" action="" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{form.as_p}}
+					<!-- {{form.as_ul}} -->
+					<!-- {{form.as_table}} -->
+				<button class="btn btn-block btn-primary mt-4" type="submit">Update Information</button>
+				</form>
+			</div>	
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

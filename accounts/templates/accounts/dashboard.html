@@ -1,0 +1,202 @@
+{% extends 'main.html' %}
+
+{% block content %} 
+
+{% include 'accounts/partials/status.html' %}
+
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<div class="card-header">
+				<h5 class="text-white">Filter Customers</h5>
+			</div>			
+			<hr class="bg-secondary"/>
+			<form method="get" class="form">
+				<div class="form-row">
+					<div class="form-group col-md-4 col-lg-1 mx-auto">
+						<label>{{customer_filter.form.id.label}}</label>{{customer_filter.form.id}}
+					</div>
+					<div class="form-group col-md-8 col-lg-3 mx-auto">
+						<label>{{customer_filter.form.name.label}}</label>{{customer_filter.form.name}}
+					</div>
+					<div class="form-group col-md-4 col-lg-3 mx-auto">
+						<label>{{customer_filter.form.phone.label}}</label>{{customer_filter.form.phone}}
+					</div>
+					<div class="form-group col-md-4 col-lg-3 mx-auto">
+						<label>{{customer_filter.form.email.label}}</label>{{customer_filter.form.email}}
+					</div>					
+					<div class="col-12 col-md-4 col-lg-2 align-self-end mb-3">
+						<button class="btn btn-primary w-100" type="submit">Search</button>
+					</div>
+				</div>
+		  </form>
+		</div>
+	</div>	
+</div>
+<br />
+
+<div class="row">
+  <!-- Customers Table -->
+  <div class="col-md-5 mb-5">
+    <div class="card card-body">
+      <div class="card-header">
+        <h5 class="text-white">Customers</h5>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th></th>
+            <th>Customer</th>
+            <th>Phone</th>
+          </tr>
+
+          {% for customer in customers %}
+          <tr>
+            <td><a class="btn btn-sm btn-secondary" href="{% url 'customer' customer.id %}">View</a></td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.phone}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+            <!-- Pagination - Customers -->
+            <ul class="pagination justify-content-center">
+              {% if customers.has_previous %}
+              <li class="page-item" title="First">
+                <a class="page-link" href="?c_page=1&o_page={{orders.number}}">
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#">
+              {% endif %}
+                  <span>&laquo;</span><span class="sr-only">First</span>
+                </a>
+              </li>
+              {% if customers.has_previous %}
+              <li class="page-item" title="Previous">
+                <a class="page-link" href="?c_page={{customers.previous_page_number}}&o_page={{orders.number}}">
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#">
+              {% endif %}
+                  <span>&lt;</span><span class="sr-only">Prev</span>
+                </a>
+              </li>
+      
+              {% if customers.has_next %}
+              <li class="page-item" title="Next">
+                <a class="page-link" href="?c_page={{customers.next_page_number}}&o_page={{orders.number}}">
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#">
+              {% endif %}
+                  <span>&gt;</span><span class="sr-only">Next</span>
+                </a>
+              </li>
+      
+              {% if customers.has_next %}
+              <li class="page-item" title="Last">
+                <a class="page-link" href="?c_page={{customers_pages_total}}&o_page={{orders.number}}">
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#">
+              {% endif %}
+                  <span>&raquo;</span><span class="sr-only">Next</span>
+                </a>
+              </li>
+              <li class="page-item ml-auto pt-1">{{customers.number}}/{{customers_pages_total}}</li>  
+            </ul> 
+    </div>
+  </div>
+  <!-- End Customers Table -->
+  <!-- Orders Table -->
+  <div class="col-md-7 mb-5">
+    <div class="card card-body">
+      <div class="card-header">
+        <h5 class="text-white">Orders</h5>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th>Product</th>
+            <th>Date&nbsp;Orderd</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+
+          {% for order in orders %}
+          <tr>
+            <td>{{order.product}}</td>
+            <td>{{order.date_created|date:"D d M Y"}}</td>
+            <td>{{order.status}}</td>
+            <td><a class="btn btn-sm btn-secondary" href="{% url 'update_order' order.id %}">Update</a></td>
+            <!-- Delete Order Btn -->
+            {% if order.id == request.GET.delete_order|add:"0"  %}
+            <td>
+              <a class="btn btn-sm btn-warning mx-auto mb-2" href="?o_page={{request.GET.o_page}}">Cancel</a>
+              <form method="post" action="{% url 'delete_order' order.id %}?next={{ request.path }}">
+                {% csrf_token %}
+                <button class="btn btn-sm btn-danger mx-auto" type="submit">Delete</button>				
+              </form>
+            </td>
+            {% else %}
+            <!-- Set delete_order and  redirect to the same page to confirm delete -->
+            <td><a class="btn btn-sm btn-danger" href="?delete_order={{order.id}}&o_page={{request.GET.o_page}}">Delete</a></td>
+            {% endif %}
+
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <!-- Pagination - Orders -->
+      <ul class="pagination justify-content-center">
+        {% if orders.has_previous %}
+        <li class="page-item" title="First">
+          <a class="page-link" href="?c_page={{customers.number}}&o_page=1">
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">
+        {% endif %}
+            <span>&laquo;</span><span class="sr-only">First</span>
+          </a>
+        </li>
+        {% if orders.has_previous %}
+        <li class="page-item" title="Previous">
+          <a class="page-link" href="?c_page={{customers.number}}&o_page={{orders.previous_page_number}}">
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">
+        {% endif %}
+            <span>&lt;</span><span class="sr-only">Prev</span>
+          </a>
+        </li>
+
+        {% if orders.has_next %}
+        <li class="page-item" title="Next">
+          <a class="page-link" href="?c_page={{customers.number}}&o_page={{orders.next_page_number}}">
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">
+        {% endif %}
+            <span>&gt;</span><span class="sr-only">Next</span>
+          </a>
+        </li>
+
+        {% if orders.has_next %}
+        <li class="page-item" title="Last">
+          <a class="page-link" href="?c_page={{customers.number}}&o_page={{orders_pages_total}}">
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">
+        {% endif %}
+            <span>&raquo;</span><span class="sr-only">Next</span>
+          </a>
+        </li>
+        <li class="page-item ml-auto pt-1">{{orders.number}}/{{orders_pages_total}}</li>  
+      </ul> 
+    </div>
+  </div>
+  <!-- End Orders Table -->
+</div>
+
+{% endblock %}

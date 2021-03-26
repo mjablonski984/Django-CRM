@@ -1,0 +1,30 @@
+[
+    {
+      "model": "accounts.Tag",
+      "pk": 1,
+      "fields": {
+        "name": "Summer"
+      }
+    },
+    {
+      "model": "accounts.Tag",
+      "pk": 2,
+      "fields": {
+        "name": "Winter"
+      }
+    },
+    {
+      "model": "accounts.Tag",
+      "pk": 3,
+      "fields": {
+        "name": "Cooking"
+      }
+    },
+    {
+      "model": "accounts.Tag",
+      "pk": 4,
+      "fields": {
+        "name": "Family"
+      }
+    }
+]
