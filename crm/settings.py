@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '7+22qtpbgu==2r*ejzja(1z%_v9z+aj@ygx1cm3s$l1=&qn##r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# IMPORTANT When working on localhost set Debug to False. You can also empty ALLOWED_HOSTS list
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,9 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
 ]
-
+# Add 'whitenoise' middleware - allows web app to serve its own static files (when deloying to Paas like Heroku etc.)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -124,6 +127,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# Static root must be set if deploying app to Paas lihe Heroku etc.(On build inserts files in staticfiles dir )
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Comment out on localhost
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/images/' # Path to images & videos
