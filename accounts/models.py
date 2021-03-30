@@ -24,7 +24,8 @@ class Customer(models.Model):
     def save(self, *args, **kwargs):
         try:
             this = Customer.objects.get(id=self.id)
-            if this.profile_pic != self.profile_pic:
+            if this.profile_pic != 'default_user.png' and this.profile_pic != self.profile_pic:
+                print(this.profile_pic)
                 this.profile_pic.delete()
         except: pass
         super(Customer, self).save(*args, **kwargs)

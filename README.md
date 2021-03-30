@@ -24,7 +24,7 @@ A simple CRM panel built to demonstrate  some of the important features of Djang
 
 3. Install requirements:
     ```
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
     ```
 
 4. Create database and update database settings (settings.py); or use dafault sqlite3 database
